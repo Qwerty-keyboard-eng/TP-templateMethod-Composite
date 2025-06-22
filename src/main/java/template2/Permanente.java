@@ -14,25 +14,24 @@ public class Permanente extends Empleado {
     }
 
     @Override
-    public float sueldo(int horasTrabajadas) {
-        return super.sueldo(horasTrabajadas)
-                + salarioFamiliar()
-                + antiguedad()
-                - descuentos();
+    protected float calcularExtras() {
+        return salarioFamiliar() + antiguedad();
     }
 
-    protected float salarioFamiliar() {
-        //lógica de calculo de sueldo por hijo
-        return 0;
+    @Override
+    protected float calcularDescuentos() {
+        return descuentos();
+    }
+
+    private float salarioFamiliar() {
+        return cantidadHijos * 1000f;
     }
 
     private float antiguedad() {
-        //lógica de calculo segun antiguedad
-        return 0;
+        return cantidadAñosTrabajados * 200f;
     }
 
     private float descuentos() {
-        //lógica de calculo de obra social y jubilacion
-        return 0f;
+        return getSueldoPorHora() * 10 * 0.10f; // Ejemplo simple de descuento
     }
 }

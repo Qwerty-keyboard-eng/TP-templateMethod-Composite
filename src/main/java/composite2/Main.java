@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         PrintConsola pc = (msg) -> System.out.println(msg);
         var proyecto = new Proyecto(pc);
+
         TareaCompleja release = new TareaCompleja("Preparar Release");
         Tarea docu = new Tarea("Escribir Documentacion");
         Tarea changelog = new Tarea("Actualizar changelog");
@@ -14,8 +15,11 @@ public class Main {
         qa.agregarSubtarea(new Tarea("Correr Tests Automatizados"));
         qa.agregarSubtarea(new Tarea("Correr Tests Manuales"));
 
+        Tarea desarrollo = new Tarea("Desarrollar Caracteristica Principal");
+
         proyecto.agregar(release);
         proyecto.agregar(qa);
+        proyecto.agregar(desarrollo);
 
         proyecto.mostrar();
     }

@@ -6,7 +6,14 @@ public class CuentaCorriente extends CuentaBancaria {
     }
 
     @Override
-    public void extraer(float saldoARetirar) {
-        saldo -= saldoARetirar;
+    protected boolean puedeExtraer(float monto) {
+        return true;
+    }
+
+    @Override
+    protected void despuesDeExtraer(float montoRetirado) {
+        if (this.saldo < 0) {
+            System.out.println("Cuenta Corriente: Se ha incurrido en un sobregiro de: " + Math.abs(this.saldo));
+        }
     }
 }

@@ -1,14 +1,14 @@
 package composite2;
 
 public class FakePrintConsola implements PrintConsola {
-    private String salida = "";
+    private StringBuilder buffer = new StringBuilder();
 
     @Override
     public void println(String mensaje) {
-        salida += mensaje + System.lineSeparator();
+        buffer.append(mensaje).append("\n");
     }
 
-    String salida() {
-        return this.salida;
+    public String salida() {
+        return buffer.toString();
     }
 }

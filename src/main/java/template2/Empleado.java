@@ -9,7 +9,26 @@ public abstract class Empleado {
         this.nombre = nombre;
     }
 
-    public float sueldo(int horasTrabajadas) {
+    public float getSueldoPorHora() {
+        return sueldoPorHora;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public final float calcularSueldo(int horasTrabajadas) {
+        float sueldoBase = calcularSueldoBase(horasTrabajadas);
+        float extras = calcularExtras();
+        float descuentos = calcularDescuentos();
+        return sueldoBase + extras - descuentos;
+    }
+
+    protected float calcularSueldoBase(int horasTrabajadas) {
         return this.sueldoPorHora * horasTrabajadas;
     }
+
+    protected abstract float calcularExtras();
+
+    protected abstract float calcularDescuentos();
 }

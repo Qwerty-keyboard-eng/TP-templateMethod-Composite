@@ -7,8 +7,8 @@ public class Main {
         var eTemporal = new Temporal(80, "temporal", 2);
         var ePermanente = new Permanente(100, "permanente", 3, 2);
 
-        System.out.println(eAprendiz.sueldo(10));
-        System.out.println(eTemporal.sueldo(10));
-        System.out.println(ePermanente.sueldo(10));
+        System.out.println("Sueldo de " + eAprendiz.getNombre() + ": " + eAprendiz.calcularSueldo(10));
+        System.out.println("Sueldo de " + eTemporal.getNombre() + ": " + eTemporal.calcularSueldo(10));
+        System.out.println("Sueldo de " + ePermanente.getNombre() + ": " + ePermanente.calcularSueldo(10));
     }
 }

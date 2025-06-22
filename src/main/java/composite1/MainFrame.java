@@ -1,28 +1,39 @@
 package composite1;
 
-import javax.swing.*;
 
-public class MainFrame extends JFrame {
-    public MainFrame() {
-        super("Dibujar Figuras");
+import javax.swing.*;
+import java.awt.*;
+
+public class MainFrame {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Dibujo Simple con Composite");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null);
 
         Canvas canvas = new Canvas();
-        canvas.agregarFigura(new Linea(new Coordenada(50, 50), 200));
-        canvas.agregarFigura(new Circulo(new Coordenada(200, 200), 50));
-        canvas.agregarFigura(new Texto(new Coordenada(100, 300), "Hola Mundo"));
-        // Dibujame un Dibujo ahora
-        // ¿como hago?
+        canvas.setBackground(Color.WHITE);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
-        setLocationRelativeTo(null);
-        getContentPane().add(canvas);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            MainFrame frame = new MainFrame();
-            frame.setVisible(true);
+        GrupoFiguras casita = new GrupoFiguras();
+        casita.agregarFigura(new Linea(new Coordenada(100, 200), 100));
+        casita.agregarFigura(new Linea(new Coordenada(100, 200), 0) {
+            @Override
+            public void dibujar(Graphics2D g2d) {
+                g2d.drawLine(coordenada.x(), coordenada.y(), coordenada.x(), coordenada.y() - 50);
+            }
         });
+        casita.agregarFigura(new Linea(new Coordenada(200, 200), 0) {
+            @Override
+            public void dibujar(Graphics2D g2d) {
+                g2d.drawLine(coordenada.x(), coordenada.y(), coordenada.x(), coordenada.y() - 50);
+            }
+        });
+        casita.agregarFigura(new Linea(new Coordenada(100, 150), 100));
+        casita.agregarFigura(new Texto(new Coordenada(130, 180), "Hogar"));
+
+        canvas.agregarFigura(casita);
+
+        frame.add(canvas);
+        frame.setVisible(true);
     }
 }

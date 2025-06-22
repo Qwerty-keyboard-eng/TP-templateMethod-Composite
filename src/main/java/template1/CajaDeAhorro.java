@@ -4,11 +4,14 @@ public class CajaDeAhorro extends CuentaBancaria {
     public CajaDeAhorro(float saldo) {
         super(saldo);
     }
-    
+
     @Override
-    public void extraer(float saldoARetirar) {
-        if (this.saldo >= saldoARetirar) {
-            saldo -= saldoARetirar;
-        }
+    protected boolean puedeExtraer(float monto) {
+        return this.saldo >= monto;
+    }
+
+    @Override
+    protected void imprimirMensajeNoPermitido() {
+        System.out.println("Caja de Ahorro: Saldo insuficiente para la extracción.");
     }
 }

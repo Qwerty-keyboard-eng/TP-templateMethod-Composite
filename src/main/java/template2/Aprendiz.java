@@ -6,7 +6,12 @@ public class Aprendiz extends Empleado {
     }
 
     @Override
-    public float sueldo(int horasTrabajadas) {
-        return super.sueldo(horasTrabajadas);
+    protected float calcularExtras() {
+        return 0;
+    }
+
+    @Override
+    protected float calcularDescuentos() {
+        return 0;
     }
 }

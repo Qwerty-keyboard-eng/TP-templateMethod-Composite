@@ -12,5 +12,20 @@ public abstract class CuentaBancaria {
         return this.saldo;
     }
 
-    public abstract void extraer(float saldoARetirar);
+    public final void extraer(float montoARetirar) {
+        if (puedeExtraer(montoARetirar)) {
+            saldo -= montoARetirar;
+            despuesDeExtraer(montoARetirar);
+        } else {
+            imprimirMensajeNoPermitido();
+        }
+    }
+
+    protected abstract boolean puedeExtraer(float monto);
+
+    protected void despuesDeExtraer(float montoRetirado) {
+    }
+
+    protected void imprimirMensajeNoPermitido() {
+    }
 }

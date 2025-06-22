@@ -1,26 +1,26 @@
 package composite1;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Canvas extends JPanel {
+class GrupoFiguras implements Figura {
     private List<Figura> figuras;
 
-    public Canvas() {
-        figuras = new ArrayList<>();
+    public GrupoFiguras() {
+        this.figuras = new ArrayList<>();
     }
 
     public void agregarFigura(Figura figura) {
         figuras.add(figura);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
+    public void removerFigura(Figura figura) {
+        figuras.remove(figura);
+    }
 
+    @Override
+    public void dibujar(Graphics2D g2d) {
         for (Figura figura : figuras) {
             figura.dibujar(g2d);
         }

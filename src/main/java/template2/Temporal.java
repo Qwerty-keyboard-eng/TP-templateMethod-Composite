@@ -9,13 +9,16 @@ public class Temporal extends Empleado {
     }
 
     @Override
-    public float sueldo(int horasTrabajadas) {
-        return super.sueldo(horasTrabajadas)
-                + salarioFamiliar();
+    protected float calcularExtras() {
+        return salarioFamiliar();
     }
 
-    protected float salarioFamiliar() {
-        //lógica de calculo de sueldo por hijo
+    @Override
+    protected float calcularDescuentos() {
         return 0;
+    }
+
+    private float salarioFamiliar() {
+        return cantidadHijos * 500f;
     }
 }

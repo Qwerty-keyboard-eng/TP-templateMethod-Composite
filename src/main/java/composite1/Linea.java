@@ -3,7 +3,7 @@ package composite1;
 import java.awt.*;
 
 class Linea implements Figura {
-    private final Coordenada coordenada;
+    public final Coordenada coordenada;
     private int longitud;
 
     public Linea(Coordenada coordenada, int longitud) {
