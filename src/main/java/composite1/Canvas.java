@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Canvas extends JPanel {
-    private List<Figura> figuras;
+    private List<Figura> figuras = new ArrayList<>();
 
     public Canvas() {
-        figuras = new ArrayList<>();
     }
 
     public void agregarFigura(Figura figura) {
@@ -21,8 +20,10 @@ class Canvas extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
+        Panel panelAdapter = new Graphics2DAdapter(g2d);
+
         for (Figura figura : figuras) {
-            figura.dibujar(g2d);
+            figura.dibujar(panelAdapter);
         }
     }
 }

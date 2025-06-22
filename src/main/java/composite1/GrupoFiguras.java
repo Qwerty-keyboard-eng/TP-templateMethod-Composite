@@ -1,14 +1,13 @@
 package composite1;
 
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class GrupoFiguras implements Figura {
-    private List<Figura> figuras;
+    private List<Figura> figuras = new ArrayList<>();
 
     public GrupoFiguras() {
-        this.figuras = new ArrayList<>();
     }
 
     public void agregarFigura(Figura figura) {
@@ -20,9 +19,9 @@ class GrupoFiguras implements Figura {
     }
 
     @Override
-    public void dibujar(Graphics2D g2d) {
+    public void dibujar(Panel panel) {
         for (Figura figura : figuras) {
-            figura.dibujar(g2d);
+            figura.dibujar(panel);
         }
     }
 }

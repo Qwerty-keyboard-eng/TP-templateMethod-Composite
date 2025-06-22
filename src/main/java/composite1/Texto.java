@@ -1,9 +1,7 @@
 package composite1;
 
-import java.awt.*;
-
-class Texto implements Figura {
-    private final Coordenada coordenada;
+public class Texto implements Figura {
+    public final Coordenada coordenada;
     private String texto;
 
     public Texto(Coordenada coordenada, String texto) {
@@ -12,7 +10,7 @@ class Texto implements Figura {
     }
 
     @Override
-    public void dibujar(Graphics2D g2d) {
-        g2d.drawString(texto, coordenada.x(), coordenada.y());
+    public void dibujar(Panel panel) {
+        panel.pintarTexto(texto, coordenada.x(), coordenada.y());
     }
 }

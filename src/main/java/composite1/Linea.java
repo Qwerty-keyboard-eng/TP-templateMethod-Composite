@@ -1,8 +1,6 @@
 package composite1;
 
-import java.awt.*;
-
-class Linea implements Figura {
+public class Linea implements Figura {
     public final Coordenada coordenada;
     private int longitud;
 
@@ -12,7 +10,7 @@ class Linea implements Figura {
     }
 
     @Override
-    public void dibujar(Graphics2D g2d) {
-        g2d.drawLine(coordenada.x(), coordenada.y(), coordenada.x() + longitud, coordenada.y());
+    public void dibujar(Panel panel) {
+        panel.pintarLinea(coordenada.x(), coordenada.y(), coordenada.x() + longitud, coordenada.y());
     }
 }
